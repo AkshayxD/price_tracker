@@ -34,7 +34,7 @@ jobs:
       - name: Push updated last_prices.json to data branch
         if: success()
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
@@ -46,9 +46,8 @@ jobs:
           echo "🔍 Before updating remote:"
           git remote -v
 
-          # 💡 Force update remote to use GH_TOKEN
           git remote remove origin
-          git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+          git remote add origin https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}
 
           echo "✅ After updating remote:"
           git remote -v
