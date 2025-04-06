@@ -3,25 +3,15 @@ from lxml import html
 import os
 
 def get_price():
-    URL = "https://www.flipkart.com/apple-2024-ipad-air-m2-128-gb-rom-11-0-inch-wi-fi-only-space-grey/p/itm34f4230179cfd"
-    HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/122.0.0.0 Safari/537.36"
-    ),
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9",
-    "Connection": "keep-alive"
-    }
-
-    response = requests.get(URL, headers=HEADERS)
+    API_KEY = os.environ.get('SCRAPERAPI_KEY')
+    PRODUCT_URL = "https://www.flipkart.com/apple-2024-ipad-air-m2-128-gb-rom-11-0-inch-wi-fi-only-space-grey/p/itm34f4230179cfd"
+    scraperapi_url = f'http://api.scraperapi.com/?api_key={API_KEY}&url={PRODUCT_URL}'
+    response = requests.get(scraperapi_url)
 
     print("🔍 Status Code:", response.status_code)
     print("🔍 First 500 characters of response:")
     print(response.text[:500])  # Print the start of the HTML
-    
+
     tree = html.fromstring(response.content)
 
     xpath = "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
