@@ -31,6 +31,39 @@ jobs:
         run: |
           python price_tracker.py
 
+name: Multi-Product Price Checker
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  check-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run price tracker
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
+        run: |
+          python price_tracker.py
+
       - name: Push updated last_prices.json to data branch
         if: success()
         run: |
@@ -38,7 +71,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git fetch
           git checkout data || git checkout -b data
-          cp last_prices.json last_prices.json
           git add last_prices.json
           git commit -m "Update last prices" || echo "No changes to commit"
           git push origin data
