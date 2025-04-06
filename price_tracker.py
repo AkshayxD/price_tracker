@@ -17,6 +17,11 @@ def get_price():
     }
 
     response = requests.get(URL, headers=HEADERS)
+
+    print("🔍 Status Code:", response.status_code)
+    print("🔍 First 500 characters of response:")
+    print(response.text[:500])  # Print the start of the HTML
+    
     tree = html.fromstring(response.content)
 
     xpath = "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
