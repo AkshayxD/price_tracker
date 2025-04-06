@@ -1,0 +1,12 @@
+[
+  {
+    "name": "iPad Air M2 - Flipkart",
+    "url": "https://www.flipkart.com/your-product-url",
+    "site": "flipkart"
+  },
+  {
+    "name": "iPad Air M2 - Amazon",
+    "url": "https://www.amazon.in/your-product-url",
+    "site": "amazon"
+  }
+]
