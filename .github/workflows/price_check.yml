@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
+          persist-credentials: false
 
       - name: Fetch last_prices.json from data branch
         run: |
@@ -43,38 +44,20 @@ jobs:
         run: |
           set -e
 
-          echo "🛠 Configuring git..."
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          echo "📦 Fetching and switching branch..."
           git fetch
           git checkout data || git checkout -b data
 
-          echo "📂 Committing file..."
           git add last_prices.json
           git commit -m "Update last prices" || echo "No changes to commit"
 
-          echo "🔍 Checking remotes before:"
           git remote -v
 
-          echo "🔁 Resetting remote origin to use PAT..."
           git remote remove origin
           git remote add origin https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}
 
-          echo "🔍 Checking remotes after:"
           git remote -v
 
-          echo "🔐 Git identity check:"
-          git config user.name
-          git config user.email
-
-          echo "🧪 Testing PAT access via GitHub API..."
-          curl -s -H "Authorization: token ${PAT_TOKEN}" https://api.github.com/user | tee github_user.json
-          echo "🔍 GitHub user:"
-          cat github_user.json | jq '.login'
-
-          echo "🚀 Pushing to data branch..."
           git push https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }} HEAD:data
-
-          echo "✅ Push completed!"
