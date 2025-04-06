@@ -21,10 +21,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Download last_price artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: last_price
+          path: .
+
       - name: Run price tracker
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          LAST_PRICE: ${{ secrets.LAST_PRICE }}
           SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
         run: python price_tracker.py
+
+      - name: Upload last_price artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: last_price
+          path: last_price.txt
