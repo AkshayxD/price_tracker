@@ -3,7 +3,7 @@ from lxml import html
 import os
 
 def get_price():
-    API_KEY = os.environ.get('SCRAPERAPI_KEY')
+    API_KEY = os.getenv('SCRAPERAPI_KEY')
     PRODUCT_URL = "https://www.flipkart.com/apple-2024-ipad-air-m2-128-gb-rom-11-0-inch-wi-fi-only-space-grey/p/itm34f4230179cfd"
     scraperapi_url = f'http://api.scraperapi.com/?api_key={API_KEY}&url={PRODUCT_URL}'
     response = requests.get(scraperapi_url)
