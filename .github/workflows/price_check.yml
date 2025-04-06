@@ -1,41 +1,44 @@
-name: Flipkart Price Checker
+name: Multi-Product Price Checker
 
 on:
   schedule:
     - cron: "0 */6 * * *"  # every 6 hours
-  workflow_dispatch:       # manual trigger from UI
+  workflow_dispatch:
 
 jobs:
-  check-price:
+  check-prices:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout main branch
         uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: '3.x'
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Download last_price artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: last_price
-          path: .
 
       - name: Run price tracker
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
-        run: python price_tracker.py
+        run: |
+          python price_tracker.py
 
-      - name: Upload last_price artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: last_price
-          path: last_price.txt
+      - name: Push updated last_prices.json to data branch
+        if: success()
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git checkout --orphan data-temp
+          git reset
+          cp last_prices.json last_prices.json
+          git add last_prices.json
+          git commit -m "Update last prices"
+          git push --force origin data-temp:data
