@@ -33,6 +33,8 @@ jobs:
 
       - name: Push updated last_prices.json to data branch
         if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
@@ -40,4 +42,4 @@ jobs:
           git checkout data || git checkout -b data
           git add last_prices.json
           git commit -m "Update last prices" || echo "No changes to commit"
-          git push origin data
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }} HEAD:data
