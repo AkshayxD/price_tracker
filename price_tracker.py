@@ -8,10 +8,6 @@ def get_price():
     scraperapi_url = f'http://api.scraperapi.com/?api_key={API_KEY}&url={PRODUCT_URL}'
     response = requests.get(scraperapi_url)
 
-    print("🔍 Status Code:", response.status_code)
-    print("🔍 First 500 characters of response:")
-    print(response.text[:500])  # Print the start of the HTML
-
     tree = html.fromstring(response.content)
 
     xpath = "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
@@ -29,9 +25,16 @@ def main():
         print("❌ Could not retrieve price")
         return
 
-    # Load the last known price (from env or a file)
-    last_price = os.getenv("LAST_PRICE")
-    if last_price and (current_price >= int(last_price)):
+    # Load last known price from file
+    last_price = None
+    if os.path.exists("last_price.txt"):
+        with open("last_price.txt", "r") as f:
+            try:
+                last_price = int(f.read().strip())
+            except ValueError:
+                pass
+
+    if last_price is not None and current_price >= last_price:
         print(f"ℹ️ Price is ₹{current_price} — no drop.")
         return
 
@@ -44,6 +47,10 @@ def main():
         message = f"📱 Flipkart Price Drop Alert!\nNew Price: ₹{current_price}"
         telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         requests.post(telegram_url, data={"chat_id": chat_id, "text": message})
+
+    # Save new price to file
+    with open("last_price.txt", "w") as f:
+        f.write(str(current_price))
 
 if __name__ == "__main__":
     main()
