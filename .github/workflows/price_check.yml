@@ -14,7 +14,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
-          persist-credentials: false  # ⬅️ Important!
+
+      - name: Fetch last_prices.json from data branch
+        run: |
+          git fetch origin data
+          git checkout origin/data -- last_prices.json
 
       - name: Set up Python
         uses: actions/setup-python@v4
