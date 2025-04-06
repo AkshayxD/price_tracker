@@ -8,5 +8,15 @@
     "name": "Atomberg Renesa Ceiling Fan - Amazon",
     "url": "https://www.amazon.in/Gorilla-Renesa-Energy-Ceiling-Control/dp/B08Y5QJXSR/ref=sr_1_3?sr=8-3",
     "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+  },
+  {
+    "name": "WESTERN DIGITAL 2 TB SSD PCIe NVMe M.2 - Flipkart",
+    "url": "https://www.flipkart.com/western-digital-sn-2-tb-laptop-internal-solid-state-drive-ssd-wds200t3b0e/p/itm424116edd9b5a?pid=IHDGT787GKHD35G2&lid=LSTIHDGT787GKHD35G2CPHNGR&marketplace=FLIPKART&q=ssd+nvme&store=6bo%2Fjdy%2Fdus&srno=s_1_12&otracker=search&otracker1=search&fm=Search&iid=aac67665-1990-486e-bfbe-712af357c500.IHDGT787GKHD35G2.SEARCH&ppt=sp&ppn=sp&ssid=hhia3n1skg0000001743965029218&qH=a587311c9f741ee8",
+    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
+  },
+  {
+    "name": "EVM NVMe 1 TB SSD PCIe NVMe M.2 - Flipkart",
+    "url": "https://www.flipkart.com/evm-nvme-gen-3-1-tb-desktop-laptop-all-one-pc-s-internal-solid-state-drive-ssd-evmnv-1tb/p/itm73bb7099ddd85?pid=IHDGQDY7NKBF69S6&lid=LSTIHDGQDY7NKBF69S6QSYF4N&marketplace=FLIPKART&q=ssd+nvme+1tb&store=6bo%2Fjdy%2Fdus&srno=s_1_3&otracker=search&otracker1=search&fm=Search&iid=2ec17953-4677-492f-b89e-98151f48284a.IHDGQDY7NKBF69S6.SEARCH&ppt=sp&ppn=sp&ssid=pnz4n3adzk0000001743965155822&qH=40687a6a712f5499",
+    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
   }
 ]
