@@ -10,23 +10,38 @@
     "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
   },
   {
-    "name": "WESTERN DIGITAL 2 TB SSD PCIe NVMe M.2 - Flipkart",
-    "url": "https://www.flipkart.com/western-digital-sn-2-tb-laptop-internal-solid-state-drive-ssd-wds200t3b0e/p/itm424116edd9b5a?pid=IHDGT787GKHD35G2&lid=LSTIHDGT787GKHD35G2CPHNGR&marketplace=FLIPKART&q=ssd+nvme&store=6bo%2Fjdy%2Fdus&srno=s_1_12&otracker=search&otracker1=search&fm=Search&iid=aac67665-1990-486e-bfbe-712af357c500.IHDGT787GKHD35G2.SEARCH&ppt=sp&ppn=sp&ssid=hhia3n1skg0000001743965029218&qH=a587311c9f741ee8",
+    "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Flipkart",
+    "url": "https://www.flipkart.com/samsung-galaxy-s25-ultra-5g-titanium-black-256-gb/p/itm09d676ceb930d?pid=MOBH8K8UVNGVNGKN",
     "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
   },
   {
-    "name": "EVM NVMe 1 TB SSD PCIe NVMe M.2 - Flipkart",
-    "url": "https://www.flipkart.com/evm-nvme-gen-3-1-tb-desktop-laptop-all-one-pc-s-internal-solid-state-drive-ssd-evmnv-1tb/p/itm73bb7099ddd85?pid=IHDGQDY7NKBF69S6&lid=LSTIHDGQDY7NKBF69S6QSYF4N&marketplace=FLIPKART&q=ssd+nvme+1tb&store=6bo%2Fjdy%2Fdus&srno=s_1_3&otracker=search&otracker1=search&fm=Search&iid=2ec17953-4677-492f-b89e-98151f48284a.IHDGQDY7NKBF69S6.SEARCH&ppt=sp&ppn=sp&ssid=pnz4n3adzk0000001743965155822&qH=40687a6a712f5499",
+    "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Amazon (Other Offers)",
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DVC6VC7P",
+    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+  },
+  {
+    "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Amazon (With exchange bonus or No cost EMI)",
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKNQW8F",
+    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Flipkart (BTPLD)",
+    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBGX2F3QGZYYZAK",
     "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
   },
   {
-    "name": "Samsung Galaxy S25 Ultra 5G (256/12) - Flipkart",
-    "url": "https://www.flipkart.com/samsung-galaxy-s25-ultra-5g-titanium-black-256-gb/p/itm09d676ceb930d?pid=MOBH8K8UVNGVNGKN&lid=LSTMOBH8K8UVNGVNGKNFV5MBM&marketplace=FLIPKART&q=s25%20ultra&sattr[]=color&sattr[]=storage&pageUID=1743995123104",
+    "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Flipkart (AceDeal)",
+    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBH3P4UM6ACEC2M",
     "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
   },
   {
-    "name": "Samsung Galaxy S25 Ultra 5G (256/12) - Amazon",
-    "url": "https://www.amazon.in/dp/B0DVC6VC7P?ref=cm_sw_r_cso_cp_apan_dp_W0N2DSH2EKJ58GQN0BFN&ref_=cm_sw_r_cso_cp_apan_dp_W0N2DSH2EKJ58GQN0BFN&social_share=cm_sw_r_cso_cp_apan_dp_W0N2DSH2EKJ58GQN0BFN&previewDoh=1",
+    "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Amazon (Other Offers)",
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CT5BJC16",
+    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Amazon (With exchange bonus or No cost EMI)",
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CS5Z3T4M",
     "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
   }
 ]
