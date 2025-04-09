@@ -1,47 +1,38 @@
 [
   {
     "name": "Atomberg Renesa Ceiling Fan - Flipkart",
-    "url": "https://www.flipkart.com/atomberg-renesa-5-star-1200-mm-3-blade-ceiling-fan/p/itm796cc539b2bb9?pid=FANGYWHHNTRPRSPX&lid=LSTFANGYWHHNTRPRSPXVDXMN9&marketplace=FLIPKART&q=atomberg&sattr[]=color&st=color",
-    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
+    "url": "https://www.flipkart.com/atomberg-renesa-5-star-1200-mm-3-blade-ceiling-fan/p/itm796cc539b2bb9?pid=FANGYWHHNTRPRSPX"
   },
   {
     "name": "Atomberg Renesa Ceiling Fan - Amazon",
-    "url": "https://www.amazon.in/Gorilla-Renesa-Energy-Ceiling-Control/dp/B08Y5QJXSR/ref=sr_1_3?sr=8-3",
-    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+    "url": "https://www.amazon.in/Gorilla-Renesa-Energy-Ceiling-Control/dp/B08Y5QJXSR/"
   },
   {
     "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Flipkart",
-    "url": "https://www.flipkart.com/samsung-galaxy-s25-ultra-5g-titanium-black-256-gb/p/itm09d676ceb930d?pid=MOBH8K8UVNGVNGKN",
-    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
+    "url": "https://www.flipkart.com/samsung-galaxy-s25-ultra-5g-titanium-black-256-gb/p/itm09d676ceb930d?pid=MOBH8K8UVNGVNGKN"
   },
   {
     "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Amazon (Other Offers)",
-    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DVC6VC7P",
-    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DVC6VC7P"
   },
   {
     "name": "Samsung Galaxy S25 Ultra 5G, Titanium Black (256/12) - Amazon (With exchange bonus or No cost EMI)",
-    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKNQW8F",
-    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKNQW8F"
   },
   {
     "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Flipkart (BTPLD)",
-    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBGX2F3QGZYYZAK",
-    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
+    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBGX2F3QGZYYZAK"
   },
   {
     "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Flipkart (AceDeal)",
-    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBH3P4UM6ACEC2M",
-    "xpath": "//div[contains(@class, 'Nx9bqj') and contains(@class, 'CxhGGd')]/text()"
+    "url": "https://www.flipkart.com/samsung-galaxy-s24-ultra-5g-titanium-black-256-gb/p/itmfde5d3afe6bda?pid=MOBH3P4UM6ACEC2M"
   },
   {
     "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Amazon (Other Offers)",
-    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CT5BJC16",
-    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CT5BJC16"
   },
   {
     "name": "Samsung Galaxy S24 Ultra 5G, Titanium Black (256/12) - Amazon (With exchange bonus or No cost EMI)",
-    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CS5Z3T4M",
-    "xpath": "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
+    "url": "https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-_without/dp/B0CS5Z3T4M"
   }
 ]
