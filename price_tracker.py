@@ -76,6 +76,7 @@ def main():
         last_price = last_prices.get(name)
         if last_price is None:
             send_telegram_message(f"💡 New Product Added: {name}\nPrice: ₹{current_price}")
+            last_prices[name] = current_price
         elif(current_price < last_price):
             send_telegram_message(f"✅⬇️ Price Drop Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}\nThat's a {int((((last_price-current_price)/last_price)*100))}% price decrease!")
             last_prices[name] = current_price
