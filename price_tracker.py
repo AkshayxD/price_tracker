@@ -44,12 +44,12 @@ def get_price(product):
 
         tree = html.fromstring(response.content)
 
-        if('amazon' in product['name'].lower()):
+        if 'amazon' in product['name'].lower():
             rqd_xpath = AMAZON_XPATH
-        elif('flipkart' in product['name'].lower()):
+        elif 'flipkart' in product['name'].lower():
             rqd_xpath = FLIPKART_XPATH
         else:
-            print("website name not present in product['name']")
+            print("⚠️ Website name not present in product['name']")
             return None
 
         price_elements = tree.xpath(rqd_xpath)
@@ -76,14 +76,18 @@ def main():
         last_price = last_prices.get(name)
         if last_price is None:
             send_telegram_message(f"💡 New Product Added: {name}\nPrice: ₹{current_price}")
-            last_prices[name] = current_price
-        elif(current_price < last_price):
-            send_telegram_message(f"✅⬇️ Price Drop Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}\nThat's a {int((((last_price-current_price)/last_price)*100))}% price decrease!")
-            last_prices[name] = current_price
-        elif(current_price > last_price):
-            send_telegram_message(f"❌🔺 Price Increase Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}")
+        elif current_price < last_price:
+            drop_percent = int(((last_price - current_price) / last_price) * 100)
+            send_telegram_message(
+                f"✅⬇️ Price Drop Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}\nThat's a {drop_percent}% price decrease!"
+            )
+            last_prices[name] = current_price  # Save only if price dropped
+        elif current_price > last_price:
+            send_telegram_message(
+                f"❌🔺 Price Increase Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}"
+            )
         else:
-            print(f"⚠️ No Price Change: {name}\n₹{current_price}")
+            print(f"⚠️ No Price Change: {name} — ₹{current_price}")
 
     save_json(last_prices, LAST_PRICES_FILE)
 
