@@ -73,22 +73,29 @@ def main():
             send_telegram_message(f"⚠️ Could not fetch price for the product: {name}")
             continue
 
-        last_price = last_prices.get(name)
-        if last_price is None:
-            send_telegram_message(f"💡 New Product Added: {name}\nPrice: ₹{current_price}")
-        elif current_price < last_price:
-            drop_percent = int(((last_price - current_price) / last_price) * 100)
-            send_telegram_message(
-                f"✅⬇️ Price Drop Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}\nThat's a {drop_percent}% price decrease!"
-            )
-            last_prices[name] = min(current_price, last_price)  # Save only if price dropped
-        elif current_price > last_price:
-            send_telegram_message(
-                f"❌🔺 Price Increase Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}"
-            )
-        else:
-            print(f"⚠️ No Price Change: {name} — ₹{current_price}")
+        lowest_price = last_prices.get(name)
 
+        if lowest_price is None:
+            # First time tracking → treat as lowest
+            send_telegram_message(f"💡 New Product Added: {name}\nCurrent Price: ₹{current_price}")
+            last_prices[name] = current_price
+
+        elif current_price < lowest_price:
+            # Found a new lowest price → update
+            drop_percent = int(((lowest_price - current_price) / lowest_price) * 100)
+            send_telegram_message(
+                f"✅⬇️ New Lowest Price for {name}!\n"
+                f"New Price: ₹{current_price}\n"
+                f"Previous Lowest: ₹{lowest_price}\n"
+                f"That's {drop_percent}% lower than before!"
+            )
+            last_prices[name] = current_price  # update to new lowest
+
+        else:
+            # Price is same or higher than lowest → do nothing
+            print(f"ℹ️ {name} is ₹{current_price} (Lowest Ever: ₹{lowest_price})")
+
+    # Save only lowest prices
     save_json(last_prices, LAST_PRICES_FILE)
 
 
