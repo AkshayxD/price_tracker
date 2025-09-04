@@ -81,7 +81,7 @@ def main():
             send_telegram_message(
                 f"✅⬇️ Price Drop Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}\nThat's a {drop_percent}% price decrease!"
             )
-            last_prices[name] = current_price  # Save only if price dropped
+            last_prices[name] = min(current_price, last_price)  # Save only if price dropped
         elif current_price > last_price:
             send_telegram_message(
                 f"❌🔺 Price Increase Alert: {name}\nNew Price: ₹{current_price}\nOld Price: ₹{last_price}"
