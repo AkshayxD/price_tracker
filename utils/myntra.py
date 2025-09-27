@@ -9,9 +9,10 @@ OFFER_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-offers-price']/text(
 AVAILABLE_SIZES_XPATH = "//*[@id='sizeButtonsContainer']//button[not(contains(@class,'size-buttons-size-button-disabled')) and not(contains(@class,'size-buttons-show-size-chart'))]/p/text()"
 
 def get_price(product):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}&render=true"
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers)
         print(f"🔍 {product['name']}")
         print(f"Status Code: {response.status_code}")
         if response.status_code != 200:

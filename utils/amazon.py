@@ -6,9 +6,10 @@ SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY")
 MAIN_PRICE_XPATH = "//div[contains(@id, 'corePriceDisplay_desktop_feature_div')]//span[contains(@class, 'a-price-whole')]/text()"
 
 def get_price(product):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}"
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers)
         print(f"🔍 {product['name']}")
         print(f"Status Code: {response.status_code}")
         if response.status_code != 200:
