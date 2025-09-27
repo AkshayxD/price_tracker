@@ -33,20 +33,21 @@ def get_price(product):
         if out_of_stock_elements:
             print("Out of Stock")
             return None, "Out of Stock"
-        elif available_sizes_elements:
-            print("Required Size not available")
-            return None, "Required Size not available"
         elif main_price_elements:
             for size in available_sizes_elements:
                 if size.strip() in required_sizes:
                     size_available = True
+                    break
+            
             if size_available:
                 main_price = main_price_elements[0].strip()
-                return int(main_price.replace("₹", "").replace(",", ""))
+                return int(main_price.replace("₹", "").replace(",", "")), None
             else:
                 print("Required Size not available")
                 return None, "Required Size not available"
+        else:
+            print("No price elements found")
+            return None, "No price elements found"
     except Exception as e:
         print(f"❌ Failed to scrape {product['name']}: {e}")
         return None, str(e)
-    return None, "Unknown Error"

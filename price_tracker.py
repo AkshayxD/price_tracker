@@ -18,11 +18,11 @@ def main():
             current_price, error = myntra.get_price(product)
         else:
             print("⚠️ Website name not present in product['name']")
-            telegram.send_telegram_message(f"⚠️ Website name not present in product['name']: {name}")
+            telegram.send_telegram_message(f"⚠️ Website name not present in product['name']\n{name}")
             return None
         
         if current_price is None:
-            telegram.send_telegram_message(f"⚠️ Could not fetch price for the product: {name}\nReason: {error}")
+            telegram.send_telegram_message(f"⚠️ Could not fetch price\n{name}\nReason: {error}")
             continue
 
         lowest_price = last_prices.get(name)
