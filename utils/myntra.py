@@ -21,7 +21,13 @@ def get_price(product):
         print(f"Response: {response.content}")
         print(f"Tree: {tree}")
 
-        required_sizes = sizes.REQUIRED_SHOE_SIZES + sizes.REQUIRED_T_SHIRT_SIZES + sizes.REQUIRED_PANT_SIZES
+        if 'TopSize' in product['name']:
+            required_sizes = sizes.REQUIRED_TOP_SIZES
+        elif 'BottomSize' in product['name']:
+            required_sizes = sizes.REQUIRED_BOTTOM_SIZES
+        elif 'ShoeSize' in product['name']:
+            required_sizes = sizes.REQUIRED_SHOE_SIZES
+            
         size_available = False
         print(f"Required Sizes: {required_sizes}")
 
@@ -38,7 +44,7 @@ def get_price(product):
             
             if size_available:
                 main_price = main_price_elements[0].strip()
-                return int(main_price.replace("₹", "").replace(",", "")), None
+                return int(main_price.replace('â\x82¹', '').replace("₹", "").replace(",", "")), None
             else:
                 print("Required Size not available")
                 return None, "Required Size not available"
