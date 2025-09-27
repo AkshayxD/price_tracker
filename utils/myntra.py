@@ -18,9 +18,12 @@ def get_price(product):
             raise Exception(f"Non-200 response: {Exception}")
 
         tree = html.fromstring(response.content)
+        print(f"Response: {response.content}")
+        print(f"Tree: {tree}")
 
         required_sizes = sizes.REQUIRED_SHOE_SIZES + sizes.REQUIRED_T_SHIRT_SIZES + sizes.REQUIRED_PANT_SIZES
         size_available = False
+        print(f"Required Sizes: {required_sizes}")
 
         main_price_elements = tree.xpath(MAIN_PRICE_XPATH)
         print(f"Main Price Elements: {main_price_elements}")
