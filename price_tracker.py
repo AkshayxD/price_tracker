@@ -50,7 +50,7 @@ def main():
                 f"✅⬇️ Price for {name}\n"
                 f"New Price: ₹{current_price}\n"
                 f"Previous Lowest: ₹{lowest_price}\n"
-                f"That's {drop_percent}% more than before"
+                f"That's {increase_percent}% more than before"
             )
 
     # Save only lowest prices

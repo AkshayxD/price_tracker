@@ -19,8 +19,6 @@ def get_price(product):
             raise Exception(f"Non-200 response: {Exception}")
 
         tree = html.fromstring(response.content)
-        print(f"Response: {response.content}")
-        print(f"Tree: {tree}")
 
         if 'TopSize' in product['name']:
             required_sizes = sizes.REQUIRED_TOP_SIZES
