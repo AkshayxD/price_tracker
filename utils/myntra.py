@@ -4,9 +4,9 @@ from config import sizes
 
 SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY")
 
-MAIN_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-price']"
+MAIN_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-price']/strong"
 OFFER_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-offers-price']"
-AVAILABLE_SIZES_XPATH = "//*[@id='sizeButtonsContainer']//button[not(contains(@class,'size-buttons-size-button-disabled')) and not(contains(@class,'size-buttons-show-size-chart'))]"
+AVAILABLE_SIZES_XPATH = "//*[@id='sizeButtonsContainer']//button[not(contains(@class,'size-buttons-size-button-disabled')) and not(contains(@class,'size-buttons-show-size-chart'))]/p"
 
 def get_price(product):
     url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}"
