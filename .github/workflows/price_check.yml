@@ -2,7 +2,7 @@ name: Multi-Product Price Checker
 
 on:
   schedule:
-    - cron: "0 19 * * *"  # every 6 hours
+    - cron: "0 19 * * *"
   workflow_dispatch:
 
 jobs:
