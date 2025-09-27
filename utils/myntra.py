@@ -9,7 +9,7 @@ OFFER_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-offers-price']/text(
 AVAILABLE_SIZES_XPATH = "//*[@id='sizeButtonsContainer']//button[not(contains(@class,'size-buttons-size-button-disabled')) and not(contains(@class,'size-buttons-show-size-chart'))]/p/text()"
 
 def get_price(product):
-    url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}"
+    url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}&render=true"
     try:
         response = requests.get(url)
         print(f"🔍 {product['name']}")
