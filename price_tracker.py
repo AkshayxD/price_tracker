@@ -1,4 +1,4 @@
-from utils import json, price_fetch, telegram
+from utils import json, telegram, amazon, flipkart, myntra
 
 PRODUCTS_FILE = "assets/products.json"
 LAST_PRICES_FILE = "last_prices.json"
@@ -8,11 +8,21 @@ def main():
     last_prices = json.load_json(LAST_PRICES_FILE)
 
     for product in products:
-        current_price = price_fetch.get_price(product)
         name = product["name"]
 
+        if 'amazon' in product['name'].lower():
+            current_price, error = amazon.get_price(product)
+        elif 'flipkart' in product['name'].lower():
+            current_price, error = flipkart.get_price(product)
+        elif 'myntra' in product['name'].lower():
+            current_price, error = myntra.get_price(product)
+        else:
+            print("⚠️ Website name not present in product['name']")
+            telegram.send_telegram_message(f"⚠️ Website name not present in product['name']: {name}")
+            return None
+        
         if current_price is None:
-            telegram.send_telegram_message(f"⚠️ Could not fetch price for the product: {name}")
+            telegram.send_telegram_message(f"⚠️ Could not fetch price for the product: {name}\nReason: {error}")
             continue
 
         lowest_price = last_prices.get(name)
@@ -35,7 +45,13 @@ def main():
 
         else:
             # Price is same or higher than lowest → do nothing
-            print(f"ℹ️ {name} is ₹{current_price} (Lowest Ever: ₹{lowest_price})")
+            increase_percent = int(((current_price - lowest_price) / lowest_price) * 100)
+            telegram.send_telegram_message(
+                f"✅⬇️ Price for {name}\n"
+                f"New Price: ₹{current_price}\n"
+                f"Previous Lowest: ₹{lowest_price}\n"
+                f"That's {drop_percent}% more than before"
+            )
 
     # Save only lowest prices
     json.save_json(last_prices, LAST_PRICES_FILE)
