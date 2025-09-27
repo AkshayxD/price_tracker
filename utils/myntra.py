@@ -4,7 +4,8 @@ from config import sizes
 
 SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY")
 
-MAIN_PRICE_XPATH = "//*[@id='mountRoot']/div/div[1]/main/div[2]/div[2]/div[1]/div/p[1]/span[1]/strong"
+MAIN_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-price']"
+OFFER_PRICE_XPATH = "//*[@id='mountRoot']//span[@class='pdp-offers-price']"
 AVAILABLE_SIZES_XPATH = "//*[@id='sizeButtonsContainer']//button[not(contains(@class,'size-buttons-size-button-disabled')) and not(contains(@class,'size-buttons-show-size-chart'))]"
 OUT_OF_STOCK_XPATH = "//*[@id='mountRoot']//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'out of stock')]"
 
@@ -18,31 +19,34 @@ def get_price(product):
             raise Exception(f"Non-200 response: {Exception}")
 
         tree = html.fromstring(response.content)
-        main_price_xpath = MAIN_PRICE_XPATH
-        available_sizes_xpath = AVAILABLE_SIZES_XPATH
-        out_of_stock_xpath = OUT_OF_STOCK_XPATH
+
         required_sizes = sizes.REQUIRED_SHOE_SIZES + sizes.REQUIRED_T_SHIRT_SIZES + sizes.REQUIRED_PANT_SIZES
+        size_available = False
 
-        main_price_elements = tree.xpath(main_price_xpath)
-        print(f"Main Price Element: {main_price_elements}")
-        if main_price_elements:
-            main_price = main_price_elements[0].strip()
+        main_price_elements = tree.xpath(MAIN_PRICE_XPATH)
+        print(f"Main Price Elements: {main_price_elements}")
+        available_sizes_elements = tree.xpath(AVAILABLE_SIZES_XPATH)
+        print(f"Available Sizes Elements: {available_sizes_elements}")
+        out_of_stock_elements = tree.xpath(OUT_OF_STOCK_XPATH)
+        print(f"Out of Stock Elements: {out_of_stock_elements}")
 
-        available_sizes_elements = tree.xpath(available_sizes_xpath)
-        print(f"Available Sizes Element: {available_sizes_elements}")
-        if available_sizes_elements:
-            available_sizes = available_sizes_elements[0].strip()
-
-        out_of_stock_elements = tree.xpath(out_of_stock_xpath)
-        print(f"Out of Stock Element: {out_of_stock_elements}")
-        if out_of_stock_elements and out_of_stock_elements[0].strip().lower() == 'out of stock':
+        if out_of_stock_elements:
             print("Out of Stock")
-            return None, 'Out of Stock'
-        elif (available_sizes_elements and (available_sizes not in required_sizes)):
+            return None, "Out of Stock"
+        elif available_sizes_elements:
             print("Required Size not available")
-            return None, 'Required Size not available'
-        else:
-            return int(main_price.replace("₹", "").replace(",", ""))
+            return None, "Required Size not available"
+        elif main_price_elements:
+            for size in available_sizes_elements:
+                if size.strip() in required_sizes:
+                    size_available = True
+            if size_available:
+                main_price = main_price_elements[0].strip()
+                return int(main_price.replace("₹", "").replace(",", ""))
+            else:
+                print("Required Size not available")
+                return None, "Required Size not available"
     except Exception as e:
         print(f"❌ Failed to scrape {product['name']}: {e}")
-    return None
+        return None, str(e)
+    return None, "Unknown Error"
