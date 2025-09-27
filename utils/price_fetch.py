@@ -10,11 +10,13 @@ def get_price(product):
     url = f"http://api.scraperapi.com/?api_key={SCRAPERAPI_KEY}&url={product['url']}"
     try:
         response = requests.get(url)
-        print(f"🔍 {product['name']} — Status Code: {response.status_code}")
+        print(f"🔍 {product['name']}")
+        print(f"Status Code: {response.status_code}")
         if response.status_code != 200:
-            raise Exception("Non-200 response")
+            raise Exception(f"Non-200 response: {Exception}")
 
         tree = html.fromstring(response.content)
+        print(f"Content: {tree[:100]}")
 
         if 'amazon' in product['name'].lower():
             rqd_xpath = AMAZON_XPATH
@@ -25,6 +27,7 @@ def get_price(product):
             return None
 
         price_elements = tree.xpath(rqd_xpath)
+        print(f"Price Element: {price_elements}")
         if price_elements:
             price_text = price_elements[0].strip()
             return int(price_text.replace("₹", "").replace(",", ""))
